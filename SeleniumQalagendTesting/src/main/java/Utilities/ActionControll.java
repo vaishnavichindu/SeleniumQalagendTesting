@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class ActionControll {
 	WebDriver driver;
+	WebElement element;
 	Actions action=new Actions(driver);
 	public void moveToElement(WebElement element)
 	{
