@@ -94,7 +94,7 @@ public class BrandPage extends WebDriverManager{
 			 }
   }
   @Test(priority = 5,enabled = true)
-  public void t006_brandEntries()
+  public void t006_brandEntries() throws InterruptedException
   {
 	  driver.navigate().refresh();
 	  String entry="100";

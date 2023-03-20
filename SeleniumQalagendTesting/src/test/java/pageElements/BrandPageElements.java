@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import Utilities.CommonAction;
 import Utilities.JavascriptExecutors;
+import Utilities.SelectClass;
 import Utilities.WaitConditions;
 import Utilities.WebDriverManager;
 
@@ -19,6 +20,7 @@ WebDriver driver;
 	
 	WaitConditions wait=new WaitConditions();
 	JavascriptExecutors script=new JavascriptExecutors();
+	SelectClass select=new SelectClass();
 	public BrandPageElements(WebDriver driver) {
 		this.driver =driver;
 		PageFactory.initElements(driver, this);
@@ -63,6 +65,7 @@ WebDriver driver;
 	
 	@FindBy(xpath="//*[@id=\"brand_add_form\"]/div[3]/button[1]")
 	public WebElement brandSave;
+
 	
 	@FindBy(xpath="//*[@id=\"brand_add_form\"]/div[3]/button[2]")
 	public WebElement brandClose;
@@ -170,10 +173,9 @@ WebDriver driver;
 		
 		
 	}
-	public void brand_entries(String value)
+	public void brand_entries(String value) throws InterruptedException
 	{
-		Select obj=new Select(brandSelect);
-		obj.selectByValue(value);
+		select.dropdown(brandSelect, value);
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
 		wait.explicitWait_Seconds(driver,next,20);
 		script.scrollToElement(brandNexts, driver);
