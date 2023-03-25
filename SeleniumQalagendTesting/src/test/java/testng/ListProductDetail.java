@@ -6,7 +6,6 @@ import Utilities.ExcelDataProvider;
 import Utilities.Retry;
 import Utilities.WaitConditions;
 import Utilities.WebDriverManager;
-import listener.TestListener;
 import pageElements.BrandPageElements;
 import pageElements.ListProductPageElements;
 import pageElements.UnitPageElements;

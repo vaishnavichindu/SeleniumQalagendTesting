@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import Utilities.ReadConfigProperty;
 import Utilities.Retry;
 import Utilities.WebDriverManager;
-import listener.TestListener;
 import pageElements.UnitPageElements;
 
 import org.testng.annotations.BeforeTest;
