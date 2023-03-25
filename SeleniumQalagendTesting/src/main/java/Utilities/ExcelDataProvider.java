@@ -16,7 +16,7 @@ public class ExcelDataProvider {
 	        // We are creating an object from the excel sheet data by calling a method that
 	        // reads data from the excel stored locally in our system
 	        Object[][] arrObj = 
-	        		getExcelData("C:\\eclipse\\SeleniumQalagendTesting\\src\\test\\resources\\login.xlsx","Sheet1");
+	        		getExcelData("C:\\Users\\user\\git\\SeleniumQalagendTesting\\SeleniumQalagendTesting\\src\\test\\resources\\logins.xlsx","Sheet1");
 	        return arrObj;
 	}
 
@@ -32,13 +32,13 @@ public class ExcelDataProvider {
 	            XSSFWorkbook workbook = new XSSFWorkbook(fis);
 	            XSSFSheet sheet = workbook.getSheetAt(0);
 	            XSSFRow row = sheet.getRow(0);
-	            int noOfRows = sheet.getLastRowNum();
+	            int noOfRows = sheet.getPhysicalNumberOfRows();
 	            int noOfCols = row.getLastCellNum();
 	            System.out.println(noOfCols+" "+noOfRows);
 	            Cell cell;
-	            data = new String[noOfRows - 1][noOfCols];
+	            data = new String[noOfRows][noOfCols];
 
-	            for (int i = 1; i < 3; i++) {
+	            for (int i = 1; i < noOfRows; i++) {
 	                for (int j = 0; j < noOfCols; j++) {
 	                    row = sheet.getRow(i);
 	                    cell = row.getCell(j);

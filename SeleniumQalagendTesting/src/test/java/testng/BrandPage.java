@@ -11,11 +11,14 @@ import Utilities.ExcelDataProvider;
 import Utilities.WaitConditions;
 import Utilities.WebDriverManager;
 import pageElements.BrandPageElements;
-import pageElements.UnitPageElements;
 
-public class BrandPage extends WebDriverManager{
+
+
+
+public class BrandPage{
 	String expectedUrl="https://qalegend.com/billing/public/login";
 	WebDriver driver;
+	WebDriverManager webDriver;
 	BrandPageElements elements;
 	WaitConditions wait=new WaitConditions();
   @Test(priority = 0,enabled = true,dataProvider ="excelData",dataProviderClass =ExcelDataProvider.class)
@@ -24,19 +27,17 @@ public class BrandPage extends WebDriverManager{
 	  elements.brand_add();
 	
   }
-  @Test(priority = 1,enabled =false)
+  @Test(priority = 1,enabled =true)
   public void   t002_brandSearch() {
    String name=elements.getSearchText();
      String searchName= elements.brand_search(name);
-	  System.out.println(searchName);
 	 Assert.assertEquals(searchName,name);
   }
-  @Test(priority = 2,enabled =false)
+  @Test(priority = 2,enabled =true)
   public void   t003_brandDeleteConfirm() {
 	 
 	  String name=elements.getSearchText();
 	     String searchName= elements.brand_search(name);
-		  System.out.println(searchName);
 		 if(searchName.equalsIgnoreCase(name))
 		 {
 			 Assert.assertTrue(true);
@@ -53,22 +54,20 @@ public class BrandPage extends WebDriverManager{
 		 }
 		
   }
-  @Test(priority = 3,enabled =false)
+  @Test(priority = 3,enabled =true)
   public void   t004_brandDeleteCancel() {
 	 
 	  String name=elements.getSearchText();
 	     String searchName=elements.brand_search(name);
-		  System.out.println(searchName);
 		 Assert.assertEquals(searchName,name);
 		 elements.brand_cancel();
   }
-  @Test(priority = 4,enabled = false)
+  @Test(priority = 4,enabled = true)
   public void   t005_brandEdit() {
 	
 	  String name=elements.getSearchText();;
 	  String editName="Vais-Greenland";
 	     String searchName= elements.brand_search(name);
-		  System.out.println(searchName);
 		  if(searchName.equalsIgnoreCase(name))
 			 {
 				 Assert.assertTrue(true);
@@ -106,8 +105,8 @@ public class BrandPage extends WebDriverManager{
 
   @BeforeTest
   public void beforeTest() {
-	  
-	  driver= launchBrowser("chrome",expectedUrl);
+	  webDriver=new WebDriverManager();
+	  driver= webDriver.launchBrowser("chrome",expectedUrl);
 	  elements = new BrandPageElements(driver);
   }
 

@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.LogStatus;
 
+import Utilities.ReadConfigProperty;
 import Utilities.WaitConditions;
 import Utilities.WebDriverManager;
 import pageElements.CategoryPageElements;
@@ -11,11 +12,13 @@ import pageElements.UnitPageElements;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class CategoryPage  {
+public class CategoryPage extends WebDriverManager {
 	String expectedUrl="https://qalegend.com/billing/public/login";
 	WebDriver driver;
 	CategoryPageElements element;
@@ -27,20 +30,18 @@ public class CategoryPage  {
 	
 	
   }
-  @Test(priority = 1,enabled =false)
+  @Test(priority = 1,enabled =true)
   public void   t002_categorySearch() {
      String name=element.getSearchText();
      String searchName= element.category_search(name);
-	 System.out.println(searchName);
-	 Assert.assertEquals(searchName,name);
+     Assert.assertEquals(searchName,name);
   }
-  @Test(priority = 2,enabled =false)
+  @Test(priority = 2,enabled =true)
   public void   t003_categoryDeleteConfirm() {
 	 
 	     String name=element.getSearchText();
 	     String searchName= element.category_search(name);
-		  System.out.println(searchName);
-		 if(searchName.equalsIgnoreCase(name))
+		  if(searchName.equalsIgnoreCase(name))
 		 {
 			 Assert.assertTrue(true);
 			 element.category_delete(); 
@@ -61,17 +62,15 @@ public class CategoryPage  {
 	 
 	  String name=element.getSearchText();
 	     String searchName=element.category_search(name);
-		  System.out.println(searchName);
 		 Assert.assertEquals(searchName,name);
 		 element.category_cancel();
   }
-  @Test(priority = 4,enabled = false)
+  @Test(priority = 4,enabled = true)
   public void   t005_categoryEdit() {
 	
 	  String name=element.getSearchText();;
 	  String editName="Vais-Grocery";
 	     String searchName= element.category_search(name);
-		  System.out.println(searchName);
 		  if(searchName.equalsIgnoreCase(name))
 			 {
 				 Assert.assertTrue(true);
@@ -96,7 +95,7 @@ public class CategoryPage  {
 				 Assert.fail("invalid");
 			 }
   }
-  @Test(priority = 5,enabled = false)
+  @Test(priority = 5,enabled = true)
   public void t006_categoryEntries() throws InterruptedException
   {
 	  driver.navigate().refresh();
@@ -106,13 +105,14 @@ public class CategoryPage  {
   }
   @BeforeTest
   public void beforeTest() {
-	  WebDriverManager webDriver=new WebDriverManager();
-	  driver=webDriver.launchBrowser("chrome",expectedUrl);
+	  ReadConfigProperty objRead = new ReadConfigProperty();
+	  driver=launchBrowser(objRead.browser,objRead.url);
 	  element = new CategoryPageElements(driver);
   }
 
   @AfterTest
   public void afterTest() {
+	  driver.close();
   }
   
   @DataProvider(name="logins")

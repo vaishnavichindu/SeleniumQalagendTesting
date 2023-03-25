@@ -16,25 +16,26 @@ public class ExcelReader {
 
 	public static void main(String[] args) {
 		ExcelReader tr = new ExcelReader();
-	System.out.println(tr.excelread(1, 0));
+	System.out.println(tr.excelread());
 
 	}
 
-	public String excelread(int a, int b) {
+	public String excelread() {
 		// TODO Auto-generated method stub
 		FileInputStream file = null;
 		XSSFWorkbook workbook;
 		XSSFSheet sheet;
 		String value = null;
 		try {
-			file = new FileInputStream(new File("src/main/resources/ObsqueraStudents.xlsx"));
+			file = new FileInputStream(new File("src/test/resources/productname.xlsx"));
 
 			// Create Workbook instance holding reference to .xlsx file
 			workbook = new XSSFWorkbook(file);
 
 			// Get first/desired sheet from the workbook
 			sheet = workbook.getSheetAt(0);
-			XSSFCell cell = sheet.getRow(a).getCell(b);
+			int noOfRows=sheet.getPhysicalNumberOfRows();
+			XSSFCell cell = sheet.getRow(noOfRows-1).getCell(0);
 			// Iterate through each rows one by one
 //            Iterator<Row> rowIterator = sheet.ge
 			switch (cell.getCellType()) {
