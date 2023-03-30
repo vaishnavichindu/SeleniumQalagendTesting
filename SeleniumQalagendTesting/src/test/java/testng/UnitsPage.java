@@ -2,7 +2,7 @@ package testng;
 
 import org.testng.annotations.Test;
 
-import com.relevantcodes.extentreports.LogStatus;
+
 
 import Utilities.Retry;
 import Utilities.WaitConditions;
@@ -11,10 +11,11 @@ import pageElements.UnitPageElements;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-
+@Listeners(Utilities.TestListener.class)
 public class UnitsPage extends WebDriverManager  {
 	
 	String expectedUrl="https://qalegend.com/billing/public/login";

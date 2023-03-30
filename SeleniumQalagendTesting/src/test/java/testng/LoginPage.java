@@ -15,7 +15,7 @@ import org.testng.annotations.Parameters;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-import com.relevantcodes.extentreports.LogStatus;
+
 public class LoginPage{
 	String expectedUrl="https://qalegend.com/billing/public/login";
 	WebDriver driver;
@@ -25,7 +25,7 @@ public class LoginPage{
   public void loginSite(String id,String password) {
 	  webelement.login(id,password);
 	  Assert.assertEquals(driver.getTitle(),"Home - QAlegend");
-	 WebDriverManager.test.log(LogStatus.PASS, "Navigated to the specified URL");
+	 
 	  }
   @BeforeTest
   @Parameters({"browser"})

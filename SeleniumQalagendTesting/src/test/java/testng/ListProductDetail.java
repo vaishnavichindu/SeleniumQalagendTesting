@@ -1,24 +1,19 @@
 package testng;
 
-import org.testng.annotations.Test;
-
-import Utilities.ExcelDataProvider;
-import Utilities.Retry;
-import Utilities.WaitConditions;
-import Utilities.WebDriverManager;
-import pageElements.BrandPageElements;
-import pageElements.ListProductPageElements;
-import pageElements.UnitPageElements;
-
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
-
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import Utilities.WaitConditions;
+import Utilities.WebDriverManager;
+import pageElements.ListProductPageElements;
 @Listeners(Utilities.TestListener.class)
 public class ListProductDetail extends WebDriverManager{
 	String expectedUrl="https://qalegend.com/billing/public/login";
@@ -29,12 +24,34 @@ public class ListProductDetail extends WebDriverManager{
   public void   t001_login(String id,String password) throws IOException  {
 	  elements.login(id,password);
 	  Assert.assertEquals(driver.getTitle(),"Home - QAlegend");
+	//  test.log(LogStatus.PASS, "passed");
   }
+  
   @Test(priority =1,enabled = true)
   public void   t002_addProductDetails() throws InterruptedException  {
 	  
-	  elements.add_Details();
+	 elements.add_Details();
 	  Assert.assertEquals(driver.getCurrentUrl(),"https://qalegend.com/billing/public/products");
+	//  test.log(LogStatus.PASS, "passed");
+
+	  
+
+	
+  }
+  @Test(priority =2,enabled = true)
+  public void   t003_addProductFail() throws InterruptedException  {
+	  
+	  Assert.assertEquals(driver.getCurrentUrl(),"https://qalegend.com/billing/public/product");
+	//  test.log(LogStatus.PASS, "passed");
+
+	  
+
+	
+  }
+  @Test(priority =3,enabled = true)
+  public void   t004_addProductskip() throws InterruptedException  {
+	  
+	throw new SkipException("Test case skipped");
 
 	  
 

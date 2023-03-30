@@ -130,6 +130,7 @@ private String product_name=excel.excelread()+String.valueOf(random.getRandomNum
 
 	public void add_Details() throws InterruptedException {
 		// TODO Auto-generated method stub
+		click(products);
 		click(listproduct);
 		click(productAdd);
 		sendKeys(productName, product_name);

@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Utilities.ExcelDataProvider;
@@ -12,13 +13,9 @@ import Utilities.WaitConditions;
 import Utilities.WebDriverManager;
 import pageElements.BrandPageElements;
 
-
-
-
-public class BrandPage{
+public class BrandPage extends WebDriverManager{
 	String expectedUrl="https://qalegend.com/billing/public/login";
 	WebDriver driver;
-	WebDriverManager webDriver;
 	BrandPageElements elements;
 	WaitConditions wait=new WaitConditions();
   @Test(priority = 0,enabled = true,dataProvider ="excelData",dataProviderClass =ExcelDataProvider.class)
@@ -105,8 +102,8 @@ public class BrandPage{
 
   @BeforeTest
   public void beforeTest() {
-	  webDriver=new WebDriverManager();
-	  driver= webDriver.launchBrowser("chrome",expectedUrl);
+	  
+	  driver=launchBrowser("chrome",expectedUrl);
 	  elements = new BrandPageElements(driver);
   }
 

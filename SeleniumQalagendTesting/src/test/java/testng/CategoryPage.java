@@ -2,7 +2,7 @@ package testng;
 
 import org.testng.annotations.Test;
 
-import com.relevantcodes.extentreports.LogStatus;
+
 
 import Utilities.ReadConfigProperty;
 import Utilities.WaitConditions;

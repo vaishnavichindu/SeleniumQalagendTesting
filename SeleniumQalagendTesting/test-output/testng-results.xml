@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-03-28T22:36:11 IST" name="Suite" finished-at="2023-03-28T22:36:43 IST" duration-ms="31940">
+    <groups>
+    </groups>
+    <test started-at="2023-03-28T22:36:11 IST" name="Test1" finished-at="2023-03-28T22:36:33 IST" duration-ms="22015">
+      <class name="testng.LoginPage">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:testng.LoginPage@694abbdc]" started-at="2023-03-28T22:36:11 IST" name="beforeTest" finished-at="2023-03-28T22:36:25 IST" duration-ms="14269" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="loginSite(java.lang.String,java.lang.String)[pri:0, instance:testng.LoginPage@694abbdc]" started-at="2023-03-28T22:36:25 IST" name="loginSite" data-provider="logins" finished-at="2023-03-28T22:36:32 IST" duration-ms="7297" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginSite -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:testng.LoginPage@694abbdc]" started-at="2023-03-28T22:36:32 IST" name="afterTest" finished-at="2023-03-28T22:36:33 IST" duration-ms="350" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- testng.LoginPage -->
+    </test> <!-- Test1 -->
+    <test started-at="2023-03-28T22:36:11 IST" name="Test2" finished-at="2023-03-28T22:36:43 IST" duration-ms="31940">
+      <class name="testng.LoginPage">
+        <test-method is-config="true" signature="beforeTest(java.lang.String)[pri:0, instance:testng.LoginPage@223191a6]" started-at="2023-03-28T22:36:11 IST" name="beforeTest" finished-at="2023-03-28T22:36:35 IST" duration-ms="24151" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="loginSite(java.lang.String,java.lang.String)[pri:0, instance:testng.LoginPage@223191a6]" started-at="2023-03-28T22:36:35 IST" name="loginSite" data-provider="logins" finished-at="2023-03-28T22:36:40 IST" duration-ms="5647" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginSite -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:testng.LoginPage@223191a6]" started-at="2023-03-28T22:36:40 IST" name="afterTest" finished-at="2023-03-28T22:36:43 IST" duration-ms="2119" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- testng.LoginPage -->
+    </test> <!-- Test2 -->
+  </suite> <!-- Suite -->
+</testng-results>
