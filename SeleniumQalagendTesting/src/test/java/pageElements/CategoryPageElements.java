@@ -113,6 +113,11 @@ public class CategoryPageElements extends CommonAction{
 	public String getSearchText() {
 		return category;
 	}
+private String categorys="Vais-Grocery";
+	
+	public String getSearchTexts() {
+		return categorys;
+	}
 	public void category_add()
 	{
 		click(products);

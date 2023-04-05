@@ -151,7 +151,7 @@ public class AddProductPageElements extends CommonAction{
 		
 		
 	}
-	private String product_name=excel.excelread()+String.valueOf(random.getRandomNumber());
+	private String product_name=excel.excelread()+String.valueOf(RandomGenerator.getRandomNumber());
 	
 	public String getProduct()
 	{

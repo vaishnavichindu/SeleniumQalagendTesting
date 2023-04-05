@@ -64,7 +64,7 @@ public class WebDriverManager {
 
 	}
 
-	public void Screenshot(String getMethodName, WebDriver driver1) throws IOException {
+	public String Screenshot(String getMethodName, WebDriver driver1) throws IOException {
 		System.out.println("scrshot");
 		TakesScreenshot scrShot = ((TakesScreenshot) driver1);
 		File scrFile = scrShot.getScreenshotAs(OutputType.FILE);
@@ -75,6 +75,7 @@ public class WebDriverManager {
 		// Copy file at destination
 
 		FileUtils.copyFile(scrFile, DestFile);
+		return DestFile.getAbsolutePath();
 
 	}
 
@@ -82,11 +83,11 @@ public class WebDriverManager {
 	public static void startTest() {
 
 		htmlReporter = new ExtentSparkReporter(
-				System.getProperty("user.dir") + "//TestReport//ExtentReportResults.html");
+				System.getProperty("user.dir") + "//TestReport//ExtentReportResult.html");
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
-		// htmlReporter.config().setTestViewChartLocation();
-		// htmlReporter.config().setChartVisibilityOnOpen(true);
+		//htmlReporter.config().setTestViewChartLocation();
+		 //htmlReporter.config().setChartVisibilityOnOpen(true);
 		htmlReporter.config().setTheme(Theme.STANDARD);
 		htmlReporter.config().setDocumentTitle("Qalagend Report");
 		htmlReporter.config().setEncoding("utf-8");

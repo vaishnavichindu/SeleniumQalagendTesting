@@ -15,27 +15,27 @@ import org.testng.annotations.Listeners;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-@Listeners(Utilities.TestListener.class)
+//@Listeners(Utilities.TestListener.class)
 public class UnitsPage extends WebDriverManager  {
 	
 	String expectedUrl="https://qalegend.com/billing/public/login";
-	WebDriver driver;
+	public static WebDriver driver;
 	UnitPageElements webelement;
 	WaitConditions wc=new WaitConditions();
-  @Test(priority = 0,enabled = true,dataProvider ="logins")
+  @Test(priority = 0,enabled = true,dataProvider ="logins",groups = {"smoke","sanity"})
   public void   T001_unitAdd(String id,String password)  {
 	  webelement.login(id,password);
 	  webelement.unit_add();
 	  Assert.assertTrue(true);
 	
   }
-  @Test(priority = 1,enabled = true)
+  @Test(priority = 1,enabled = true,groups = {"smoke"})
   public void   T002_unitSearch() {
    String name="Vai-gram";
      String searchName= webelement.unit_search(name);
 	 Assert.assertEquals(searchName,name);
   }
-  @Test(priority = 2,enabled = true)
+  @Test(priority = 2,enabled = true,groups = {"Regression"})
   public void   T003_unitDeleteConfirm() {
 	 
 	  String name="Vai-gram";
@@ -56,7 +56,7 @@ public class UnitsPage extends WebDriverManager  {
 		 }
 		
   }
-  @Test(priority = 3,enabled = true)
+  @Test(priority = 3,enabled = true,groups = {"sanity"})
   public void   T004_unitDeleteCancel() {
 	 
 	  String name="Vai-gram";
@@ -64,7 +64,7 @@ public class UnitsPage extends WebDriverManager  {
 		 Assert.assertEquals(searchName,name);
 		 webelement.unit_cancel();
   }
-  @Test(priority = 4,enabled = true)
+  @Test(priority = 4,enabled = true,groups = {"smoke"})
   public void   T005_unitEdit() {
 	
 	  String name="Vai-gram";
@@ -85,7 +85,7 @@ public class UnitsPage extends WebDriverManager  {
 				 Assert.fail("invalid");
 			 }
   }
-  @Test(priority = 5,enabled = true)
+  @Test(priority = 5,enabled = true,groups = {"sanity"})
   public void T006_unitEntries()
   {
 	  driver.navigate().refresh();

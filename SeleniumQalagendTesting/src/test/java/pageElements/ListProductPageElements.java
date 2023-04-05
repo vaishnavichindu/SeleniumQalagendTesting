@@ -134,9 +134,9 @@ private String product_name=excel.excelread()+String.valueOf(random.getRandomNum
 		click(listproduct);
 		click(productAdd);
 		sendKeys(productName, product_name);
-		select.dropdownByVisibleText(unitSelect,"Vai-gram");
 		select.dropdownByVisibleText(brandSelect, "Vai-Greenland");
 		select.dropdownByVisibleText(categorySelect, "Vai-Grocery");
+		select.dropdownByVisibleText(unitSelect,"Vai-gram");
 		select.dropdown(barcodeSelect, 3);
 		sendKeys(alertQuantity, "30");
 		select.dropdown(applicableTax, 4);

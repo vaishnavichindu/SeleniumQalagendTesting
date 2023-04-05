@@ -14,20 +14,21 @@ import org.testng.annotations.Test;
 import Utilities.WaitConditions;
 import Utilities.WebDriverManager;
 import pageElements.ListProductPageElements;
-@Listeners(Utilities.TestListener.class)
+//@Listeners(Utilities.TestListener.class)
 public class ListProductDetail extends WebDriverManager{
 	String expectedUrl="https://qalegend.com/billing/public/login";
 	public static WebDriver driver;
 	ListProductPageElements elements;
 	WaitConditions wait=new WaitConditions();
-  @Test(priority = 0,enabled = true,dataProvider ="logins")
+  @Test(priority = 0,enabled = true,dataProvider ="logins",groups = {"smoke"})
   public void   t001_login(String id,String password) throws IOException  {
 	  elements.login(id,password);
 	  Assert.assertEquals(driver.getTitle(),"Home - QAlegend");
+	  
 	//  test.log(LogStatus.PASS, "passed");
   }
   
-  @Test(priority =1,enabled = true)
+  @Test(priority =1,enabled = true,groups = {"smoke"})
   public void   t002_addProductDetails() throws InterruptedException  {
 	  
 	 elements.add_Details();
@@ -38,7 +39,7 @@ public class ListProductDetail extends WebDriverManager{
 
 	
   }
-  @Test(priority =2,enabled = true)
+  @Test(priority =2,enabled = true,groups = {"Regression"})
   public void   t003_addProductFail() throws InterruptedException  {
 	  
 	  Assert.assertEquals(driver.getCurrentUrl(),"https://qalegend.com/billing/public/product");
@@ -48,7 +49,7 @@ public class ListProductDetail extends WebDriverManager{
 
 	
   }
-  @Test(priority =3,enabled = true)
+  @Test(priority =3,enabled = true,groups = {"sanity"})
   public void   t004_addProductskip() throws InterruptedException  {
 	  
 	throw new SkipException("Test case skipped");

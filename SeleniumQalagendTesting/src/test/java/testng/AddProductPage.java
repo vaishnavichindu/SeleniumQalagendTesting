@@ -12,25 +12,26 @@ import pageElements.UnitPageElements;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-
+//@Listeners(Utilities.TestListener.class)
 public class AddProductPage extends WebDriverManager{
 	
 	String expectedUrl="https://qalegend.com/billing/public/login";
-	WebDriver driver;
+	public static WebDriver driver;
 	AddProductPageElements elements;
 	WaitConditions wait=new WaitConditions();
-  @Test(priority = 0,enabled = true,dataProvider ="logins")
+  @Test(priority = 0,enabled = true,dataProvider ="logins",groups= {"smoke"})
   public void   t001_addProductLogin(String id,String password)  {
 	  elements.login(id,password);
-	  Assert.assertEquals(driver.getTitle(),"Home - las");
+	  Assert.assertEquals(driver.getTitle(),"Home - QAlegend");
 	  
 
 	
   }
-  @Test(priority =1,enabled = false)
+  @Test(priority =1,enabled = true,groups= {"smoke"})
   public void   t002_addProductDetails() throws InterruptedException  {
 	  
 	  elements.add_Details();
@@ -40,7 +41,7 @@ public class AddProductPage extends WebDriverManager{
 
 	
   }
-  @Test(priority =2,enabled = false)
+  @Test(priority =2,enabled = true,groups= {"sanity"})
   public void   t003_addProductImage() throws InterruptedException  {
 	  
 	  		elements.add_image();
@@ -50,7 +51,7 @@ public class AddProductPage extends WebDriverManager{
 	
   }
   
-  @Test(priority =3,enabled = false)
+  @Test(priority =3,enabled = true,groups= {"Regression"})
   public void   t004_addProductSearch()  {
 	  
 	  		String name=elements.getProduct();
@@ -62,7 +63,7 @@ public class AddProductPage extends WebDriverManager{
 
 	
   }
-  @Test(priority =4,enabled =false)
+  @Test(priority =4,enabled =true,groups= {"Regression"})
   public void   t005_deleteSelected()  {
 	  
 	     String name="vai";
@@ -79,7 +80,7 @@ public class AddProductPage extends WebDriverManager{
 			 Assert.fail();
 		 }
  }
-  @Test(priority =5,enabled =false)
+  @Test(priority =5,enabled =true,groups= {"Regression"})
   public void   t006_deactivateSelected() {
 	  
 	     String name="vai-chickpea";
@@ -96,7 +97,7 @@ public class AddProductPage extends WebDriverManager{
 			 Assert.fail();
 		 }
  }
-  @Test(priority =6,enabled = false)
+  @Test(priority =6,enabled = true,groups= {"Regression"})
   public void   t007_productSort() {
 	  String name="vai";
 	     String searchName= elements.product_search(name);
@@ -111,7 +112,7 @@ public class AddProductPage extends WebDriverManager{
 			 Assert.fail();
 		 }
  }
-  @Test(priority =7,enabled = true)
+  @Test(priority =7,enabled = true,groups= {"Regression"})
   public void   t008_requiredField() throws InterruptedException {
 	  String requiredField=elements.requiredFieldValidating();
 	  if(requiredField.contains("This field is required"))
@@ -137,6 +138,7 @@ public class AddProductPage extends WebDriverManager{
 
   @AfterTest
   public void afterTest() {
+	  driver.close();
   }
   @DataProvider(name="logins")
   public Object[][] getDataFromDataprovider(){

@@ -1,28 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" parallel="tests" name="Test1(failed)">
-    <parameter name="browser" value="chrome"/>
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="Utilities.TestListener"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="testng.LoginPage">
+      <class name="testng.CategoryPage">
         <methods>
+          <include name="t001_categoryAdd"/>
+          <include name="t006_categoryEntries"/>
+          <include name="beforeTest"/>
+          <include name="t002_categorySearch"/>
+          <include name="endTest"/>
+          <include name="setupSuite"/>
+          <include name="afterTest"/>
+          <include name="startTest"/>
+          <include name="t004_categoryDeleteCancel"/>
+          <include name="t003_categoryDeleteConfirm"/>
+          <include name="t005_categoryEdit"/>
+        </methods>
+      </class> <!-- testng.CategoryPage -->
+      <class name="testng.AddProductPage">
+        <methods>
+          <include name="t005_deleteSelected"/>
+          <include name="t001_addProductLogin"/>
+          <include name="t006_deactivateSelected"/>
+          <include name="t008_requiredField"/>
+          <include name="t002_addProductDetails"/>
+          <include name="t007_productSort"/>
+          <include name="endTest"/>
+          <include name="afterTest"/>
+          <include name="setupSuite"/>
+          <include name="t004_addProductSearch"/>
+          <include name="beforeTest"/>
+          <include name="startTest"/>
+          <include name="t003_addProductImage"/>
+        </methods>
+      </class> <!-- testng.AddProductPage -->
+      <class name="testng.BrandPage">
+        <methods>
+          <include name="t002_brandSearch"/>
+          <include name="beforeTest"/>
+          <include name="endTest"/>
+          <include name="setupSuite"/>
+          <include name="afterTest"/>
+          <include name="startTest"/>
+          <include name="t003_brandDeleteConfirm"/>
+          <include name="t005_brandEdit"/>
+          <include name="t004_brandDeleteCancel"/>
+          <include name="t006_brandEntries"/>
+          <include name="t001_brandsAdd"/>
+        </methods>
+      </class> <!-- testng.BrandPage -->
+      <class name="testng.ListProductDetail">
+        <methods>
+          <include name="t003_addProductFail"/>
+          <include name="endTest"/>
+          <include name="setupSuite"/>
+          <include name="startTest"/>
+          <include name="t004_addProductskip"/>
+          <include name="beforeTest"/>
+          <include name="t001_login"/>
+          <include name="t002_addProductDetails"/>
+          <include name="afterTest"/>
+        </methods>
+      </class> <!-- testng.ListProductDetail -->
+      <class name="testng.UnitsPage">
+        <methods>
+          <include name="T006_unitEntries"/>
+          <include name="T002_unitSearch"/>
+          <include name="T003_unitDeleteConfirm"/>
+          <include name="endTest"/>
+          <include name="setupSuite"/>
+          <include name="startTest"/>
           <include name="beforeTest"/>
           <include name="afterTest"/>
-          <include name="loginSite" invocation-numbers="0"/>
+          <include name="T005_unitEdit"/>
+          <include name="T001_unitAdd"/>
+          <include name="T004_unitDeleteCancel"/>
         </methods>
-      </class> <!-- testng.LoginPage -->
+      </class> <!-- testng.UnitsPage -->
     </classes>
-  </test> <!-- Test1(failed) -->
-  <test thread-count="5" parallel="tests" name="Test2(failed)">
-    <parameter name="browser" value="firefox"/>
-    <classes>
-      <class name="testng.LoginPage">
-        <methods>
-          <include name="beforeTest"/>
-          <include name="afterTest"/>
-          <include name="loginSite" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- testng.LoginPage -->
-    </classes>
-  </test> <!-- Test2(failed) -->
+  </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

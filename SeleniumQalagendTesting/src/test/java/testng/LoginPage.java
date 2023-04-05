@@ -10,16 +10,16 @@ import pageElements.UnitPageElements;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-
-public class LoginPage{
+@Listeners(Utilities.TestListener.class)
+public class LoginPage extends WebDriverManager{
 	String expectedUrl="https://qalegend.com/billing/public/login";
-	WebDriver driver;
-	WebDriverManager  webDriver; 
+	public static WebDriver driver;
 	UnitPageElements webelement;
   @Test(priority = 0,enabled =true,dataProvider ="logins")
   public void loginSite(String id,String password) {
@@ -30,9 +30,8 @@ public class LoginPage{
   @BeforeTest
   @Parameters({"browser"})
   public void beforeTest(@Optional String browser) {
-	  webDriver=new WebDriverManager(); 
 	 
-	  driver=webDriver.launchBrowser(browser,expectedUrl);
+	  driver=launchBrowser(browser,expectedUrl);
 	  webelement = new UnitPageElements(driver);
   }
 

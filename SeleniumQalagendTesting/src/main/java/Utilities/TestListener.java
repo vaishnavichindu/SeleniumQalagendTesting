@@ -7,6 +7,10 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.Markup;
+
 
 
 
@@ -21,10 +25,13 @@ public class TestListener extends WebDriverManager implements ITestListener{
 
 	
 WebDriver driver;
+String path;
 @Override
 public synchronized void onTestStart(ITestResult result) {
     System.out.println((result.getMethod().getMethodName() + " started!"));
     test = extent.createTest(result.getMethod().getMethodName(),result.getMethod().getDescription());
+    test.info("test stared");
+    test.assignCategory(result.getMethod().getGroups());
     
 }
 
@@ -41,7 +48,7 @@ public synchronized void onTestStart(ITestResult result) {
 		}
 			try {
 				System.out.println(name);
-				Screenshot(name,driver);
+				path=Screenshot(name,driver);
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -49,7 +56,8 @@ public synchronized void onTestStart(ITestResult result) {
 			}
 			//test.log(LogStatus.FAIL,result.getMethod().getMethodName() + "Failed!" );
 			 System.out.println((result.getMethod().getMethodName() + " failed!"));
-		        test.fail(result.getThrowable());
+			 test.info("test failed");
+		        test.fail(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(path).build());
 		
 	  } 
 	   @Override
@@ -57,7 +65,8 @@ public synchronized void onTestStart(ITestResult result) {
 	    
 		 //  test.log(LogStatus.PASS,result.getMethod().getMethodName() + "passed!" );
 		   System.out.println((result.getMethod().getMethodName() + " passed!"));
-	        test.pass("Test passed");
+		   test.info("test passed");
+	        test.pass("passed");
 	    }
 
 	   
@@ -67,6 +76,7 @@ public synchronized void onTestStart(ITestResult result) {
 	    	
 	    	//test.log(LogStatus.SKIP,result.getMethod().getMethodName() + "skipped!" );
 	    	  System.out.println((result.getMethod().getMethodName() + " skipped!"));
+	    	  test.info("test skipped");
 	          test.skip(result.getThrowable());
 	     
 	    }
