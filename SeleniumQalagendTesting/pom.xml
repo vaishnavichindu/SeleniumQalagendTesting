@@ -11,7 +11,7 @@
 				<version>2.22.2</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>cross_browser.xml</suiteXmlFile>
+						<suiteXmlFile>include.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

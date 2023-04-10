@@ -28,7 +28,7 @@ public class ListProductDetail extends WebDriverManager{
 	//  test.log(LogStatus.PASS, "passed");
   }
   
-  @Test(priority =1,enabled = true,groups = {"smoke"})
+  @Test(priority =1,enabled = true,groups = {"smoke","sanity"})
   public void   t002_addProductDetails() throws InterruptedException  {
 	  
 	 elements.add_Details();

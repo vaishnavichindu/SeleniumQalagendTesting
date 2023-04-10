@@ -3,23 +3,18 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testng.AddProductPage">
+      <class name="testng.ListProductDetail">
         <methods>
-          <include name="t005_deleteSelected"/>
-          <include name="t001_addProductLogin"/>
-          <include name="t006_deactivateSelected"/>
-          <include name="t008_requiredField"/>
-          <include name="t002_addProductDetails"/>
-          <include name="t007_productSort"/>
+          <include name="t003_addProductFail"/>
           <include name="endTest"/>
-          <include name="afterTest"/>
           <include name="setupSuite"/>
-          <include name="t004_addProductSearch"/>
-          <include name="beforeTest"/>
           <include name="startTest"/>
-          <include name="t003_addProductImage"/>
+          <include name="t004_addProductskip"/>
+          <include name="beforeTest"/>
+          <include name="t002_addProductDetails"/>
+          <include name="afterTest"/>
         </methods>
-      </class> <!-- testng.AddProductPage -->
+      </class> <!-- testng.ListProductDetail -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

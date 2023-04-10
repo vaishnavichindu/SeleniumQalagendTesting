@@ -34,7 +34,7 @@ public class AddProductPage extends WebDriverManager{
   @Test(priority =1,enabled = true,groups= {"smoke"})
   public void   t002_addProductDetails() throws InterruptedException  {
 	  
-	  elements.add_Details();
+	  elements.add_Details();                                                               
 	  Assert.assertEquals(driver.getCurrentUrl(),"https://qalegend.com/billing/public/products");
 
 	  
