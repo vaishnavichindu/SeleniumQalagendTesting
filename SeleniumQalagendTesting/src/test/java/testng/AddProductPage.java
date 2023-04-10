@@ -27,6 +27,8 @@ public class AddProductPage extends WebDriverManager{
   public void   t001_addProductLogin(String id,String password)  {
 	  elements.login(id,password);
 	  Assert.assertEquals(driver.getTitle(),"Home - QAlegend");
+	  System.out.println("hoo");
+	  
 	  
 
 	
